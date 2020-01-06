@@ -71,9 +71,11 @@ public class ServiceImpl implements Service {
 
     @Value("${sms.super_code}")
     private String superCode;
-
+//
+//    @Autowired
+//    private PhoneNumberUserNameGenerator userNameGenerator;
     @Autowired
-    private PhoneNumberUserNameGenerator userNameGenerator;
+    private OrderedIdUserNameGenerator userNameGenerator;
 
     @PostConstruct
     private void init() {
@@ -104,15 +106,17 @@ public class ServiceImpl implements Service {
                 return RestResult.error(RestResult.RestCode.ERROR_SEND_SMS_OVER_FREQUENCY);
             }
 
-            String code = Utils.getRandomCode(4);
+            String code = "1234";//Utils.getRandomCode(4);
+
+
 
             RestResult.RestCode restCode = smsService.sendCode(mobile, code);
-            if (restCode == RestResult.RestCode.SUCCESS) {
+//            if (restCode == RestResult.RestCode.SUCCESS) {
                 mRecords.put(mobile, new Record(code, mobile));
                 return RestResult.ok(restCode);
-            } else {
-                return RestResult.error(restCode);
-            }
+//            } else {
+//                return RestResult.error(restCode);
+//            }
         } catch (JSONException e) {
             // json解析错误
             e.printStackTrace();

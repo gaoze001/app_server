@@ -41,13 +41,13 @@ public class SmsServiceImpl implements SmsService {
 
     @Override
     public RestResult.RestCode sendCode(String mobile, String code) {
-        if (smsVerdor == 1) {
-            return sendTencentCode(mobile, code);
-        } else if(smsVerdor == 2) {
-            return sendAliyunCode(mobile, code);
-        } else {
+//        if (smsVerdor == 1) {
+//            return sendTencentCode(mobile, code);
+//        } else if(smsVerdor == 2) {
+//            return sendAliyunCode(mobile, code);
+//        } else {
             return RestResult.RestCode.ERROR_SERVER_NOT_IMPLEMENT;
-        }
+//        }
     }
 
     private RestResult.RestCode sendTencentCode(String mobile, String code) {
