@@ -9,7 +9,7 @@ public class Controller {
     @Autowired
     private Service mService;
 
-    @GetMapping()
+    @GetMapping("/test")
     public Object health() {
         return "Ok";
     }
